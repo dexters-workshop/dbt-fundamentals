@@ -9,7 +9,7 @@ staged as (
     select 
 
         -- ids
-        id as payment_id
+          id as payment_id
         , orderid as order_id
         
         -- context
