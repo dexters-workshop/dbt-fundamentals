@@ -2,19 +2,36 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Staged customer data from our Jaffle Shop app. One unique customer per row.
     columns:
       - name: customer_id
+        description: The primary key for stg_customers.
         tests:
           - unique
           - not_null
+        name: first_name
+        description: First name of a Jaffle Shop customer.
+        name: last_name
+        description: Last name of a Jaffle Shop customer.
 
   - name: stg_orders
+    description: Staged order data from our Jaffle Shop app. One unique order per row.
     columns:
       - name: order_id
+        description: The primary key for stg_orders.
         tests:
           - unique
           - not_null
-      - name: status
+      - name: customer_id
+        description: Customer ID of the customer making the order.
+        tests: 
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: order_date
+        description: The actual date at which the customer placed the order.
+      - name: order_status
+        description: "{{ doc('order_status') }}"
         tests:
           - accepted_values:
               values:
@@ -23,8 +40,3 @@ models:
                 - return_pending
                 - returned
                 - shipped 
-      - name: customer_id
-        tests: 
-          - relationships:
-              to: ref('stg_customers')
-              field: customer_id
