@@ -14,7 +14,7 @@ staged as (
         
         -- context
         , paymentmethod as payment_method
-        , status
+        , status as payment_status
 
         -- amount stored in cents, convert it to dollars
         , amount / 100 as amount
