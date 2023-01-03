@@ -30,7 +30,7 @@ models:
           - accepted_values:
               values:
                 - success
-                - failed
+                - fail
       - name: amount
         description: The amount of the payment in dollars (USD)
       

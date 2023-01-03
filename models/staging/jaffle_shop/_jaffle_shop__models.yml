@@ -9,9 +9,9 @@ models:
         tests:
           - unique
           - not_null
-        name: first_name
+      - name: first_name
         description: First name of a Jaffle Shop customer.
-        name: last_name
+      - name: last_name
         description: Last name of a Jaffle Shop customer.
 
   - name: stg_orders
